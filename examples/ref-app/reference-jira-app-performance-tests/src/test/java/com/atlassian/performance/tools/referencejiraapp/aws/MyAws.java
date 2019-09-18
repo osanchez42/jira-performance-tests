@@ -21,7 +21,7 @@ public class MyAws {
      * When you set up this periodic housekeeping (e.g. a cronjob or a scheduled CI), add the covered region here.
      */
     private final Regions[] regionsWithHousekeeping = {
-        // Regions.EU_CENTRAL_1
+        Regions.US_EAST_1
     };
 
     /**
