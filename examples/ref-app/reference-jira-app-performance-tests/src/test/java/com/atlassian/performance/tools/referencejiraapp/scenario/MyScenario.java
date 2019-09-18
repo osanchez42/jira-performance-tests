@@ -16,6 +16,8 @@ import com.atlassian.performance.tools.jiraactions.api.scenario.Scenario;
 import com.google.common.collect.ImmutableList;
 import org.jetbrains.annotations.NotNull;
 
+import com.atlassian.performance.tools.referencejiraapp.actions.ConfigurePluginAction;
+
 import java.util.List;
 
 /**
@@ -42,7 +44,7 @@ public class MyScenario implements Scenario {
         final String d42Password = ""; //D42 password
 
         return ImmutableList.of(
-            new ConfigurePluginAction(webJira, actionMeter, issueKeyMemory, d42BaseUrl, d42Username, d42Password), //my custom action
+            new ConfigurePluginAction(webJira, actionMeter, d42BaseUrl, d42Username, d42Password), //my custom action
             new SearchJqlAction(webJira, actionMeter, jqlMemory, issueKeyMemory),
             new BrowseProjectsAction(webJira, actionMeter, adaptiveProjectMemory),
             new CreateIssueAction(webJira, actionMeter, adaptiveProjectMemory, seededRandom),

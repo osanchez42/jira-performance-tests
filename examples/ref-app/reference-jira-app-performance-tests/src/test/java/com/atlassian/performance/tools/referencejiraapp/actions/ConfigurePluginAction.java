@@ -22,11 +22,10 @@ public class ConfigurePluginAction implements Action  {
     private final String d42Username;
     private final String d42Password;
 
-    public ConfigurePluginAction(WebJira jira, ActionMeter meter, IssueKeyMemory issueKeyMemory, String d42Url, String d42Username, String d42Password)
+    public ConfigurePluginAction(WebJira jira, ActionMeter meter, String d42Url, String d42Username, String d42Password)
     {
         this.jira = jira;
         this.meter = meter;
-        this.issueKeyMemory = issueKeyMemory;
         this.d42Url = d42Url;
         this.d42Username = d42Username;
         this.d42Password = d42Password;
