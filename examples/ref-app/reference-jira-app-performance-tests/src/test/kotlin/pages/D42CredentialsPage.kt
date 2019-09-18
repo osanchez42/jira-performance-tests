@@ -1,6 +1,5 @@
 package com.atlassian.performance.tools.referencejiraapp.pages
 
-import com.atlassian.performance.tools.jiraactions.api.page.wait
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.support.ui.ExpectedConditions
@@ -57,10 +56,7 @@ class D42CredentialsPage(
         }
 
         //ensure the the com.device42.performance.tools.api.page is loaded before proceeding
-        driver.wait(
-            Duration.ofMinutes(4),
-            ExpectedConditions.presenceOfElementLocated(configLocator)
-        )
+        Thread.sleep(5000)
 
         //clear the fields just in case there is text inside them
         baseUrl.clear()

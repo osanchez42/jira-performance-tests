@@ -3,7 +3,6 @@ package com.atlassian.performance.tools.referencejiraapp.actions;
 import com.atlassian.performance.tools.jiraactions.api.WebJira;
 import com.atlassian.performance.tools.jiraactions.api.action.Action;
 import com.atlassian.performance.tools.jiraactions.api.measure.ActionMeter;
-import com.atlassian.performance.tools.jiraactions.api.memories.IssueKeyMemory;
 import com.atlassian.performance.tools.referencejiraapp.pages.D42CredentialsPage;
 import com.atlassian.performance.tools.referencejiraapp.pages.D42CustomFieldPage;
 import com.atlassian.performance.tools.referencejiraapp.pages.D42ScanPage;
@@ -15,7 +14,6 @@ public class ConfigurePluginAction implements Action  {
 
     private final WebJira jira;
     private final ActionMeter meter;
-    private final IssueKeyMemory issueKeyMemory;
 
     //d42 configuration fields
     private final String d42Url;

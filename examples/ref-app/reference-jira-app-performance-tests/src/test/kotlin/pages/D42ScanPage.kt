@@ -1,6 +1,5 @@
 package com.atlassian.performance.tools.referencejiraapp.pages
 
-import com.atlassian.performance.tools.jiraactions.api.page.wait
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.support.ui.ExpectedConditions
@@ -15,10 +14,7 @@ class D42ScanPage(
     fun runScan()
     {
         //ensure the the com.device42.performance.tools.api.page is loaded before proceeding
-        driver.wait(
-            Duration.ofMinutes(4),
-            ExpectedConditions.presenceOfElementLocated(runFullScanIndicator)
-        )
+        Thread.sleep(5000)
 
         val fullRescan = driver.findElement(By.id("fullRescan"))
         val agree = driver.findElement(By.id("agreeUpdate"))

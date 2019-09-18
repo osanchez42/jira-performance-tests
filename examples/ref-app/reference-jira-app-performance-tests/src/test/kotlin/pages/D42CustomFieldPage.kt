@@ -1,6 +1,5 @@
 package com.atlassian.performance.tools.referencejiraapp.pages
 
-import com.atlassian.performance.tools.jiraactions.api.page.wait
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.interactions.Actions
@@ -44,10 +43,7 @@ class D42CustomFieldPage(
         }
 
         //wait for the add custom field button element to load
-        driver.wait(
-            Duration.ofMinutes(4),
-            ExpectedConditions.presenceOfElementLocated(addCustomFieldIndicator)
-        )
+        Thread.sleep(5000)
 
         //once its loaded select it
         val addCustomFieldButton = driver.findElement(By.id("add_custom_fields"))
@@ -58,10 +54,7 @@ class D42CustomFieldPage(
         }
 
         //wait for add custom field window to load
-        driver.wait(
-            Duration.ofMinutes(4),
-            ExpectedConditions.presenceOfElementLocated(advancedSearchIndicator)
-        )
+        Thread.sleep(5000)
 
         //check to see if that annoying reindex window is covering the custom field creation button
         try {
