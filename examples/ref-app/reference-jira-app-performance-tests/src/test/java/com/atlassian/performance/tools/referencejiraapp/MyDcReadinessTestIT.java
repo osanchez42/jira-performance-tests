@@ -25,7 +25,7 @@ public class MyDcReadinessTestIT {
     @Test
     public void shouldTestDcReadiness() {
         final AppSource app = new LocalApp(
-            new File("../reference-jira-app/target/d42jira-5.0.1.1909181408.jar")
+            new File("../reference-jira-app/plugins/d42jira-5.0.1.1909181408.jar")
         );
         final File virtualUsersJar = new File("target/reference-jira-app-performance-tests-1.0-SNAPSHOT-fat-tests.jar");
         final Aws aws = new MyAws().aws;
