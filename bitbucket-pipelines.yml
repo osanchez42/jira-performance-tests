@@ -1,0 +1,73 @@
+image: openjdk:8
+
+pipelines:
+  default:
+    - step:
+        name: Smoke test
+        caches:
+          - gradle
+          - gradlewrapper
+        script:
+          - bash ./gradlew build
+        artifacts:
+          - build/reports/**
+          - build/test-results/**
+          - target/jpt-workspace/**
+          - target/surefire-reports/**
+          - examples/ref-app/reference-jira-app-performance-tests/target/**
+    - step:
+        name: Acceptance test
+        caches:
+          - gradle
+          - gradlewrapper
+        trigger: manual
+        script:
+          - bash ./gradlew testAcceptance
+        artifacts:
+          - build/reports/**
+          - build/test-results/**
+          - target/jpt-workspace/**
+          - target/surefire-reports/**
+          - examples/ref-app/reference-jira-app-performance-tests/target/**
+  branches:
+    master:
+      - step:
+          name: Acceptance test
+          caches:
+            - gradle
+            - gradlewrapper
+          script:
+            - bash ./gradlew testAcceptance
+          artifacts:
+            - build/reports/**
+            - build/test-results/**
+            - target/jpt-workspace/**
+            - target/surefire-reports/**
+            - examples/ref-app/reference-jira-app-performance-tests/target/**
+      - step:
+          name: Release
+          caches:
+            - gradle
+            - gradlewrapper
+          trigger: manual
+          script:
+            - git config --global user.email "bitbucketci-team@atlassian.com"
+            - git config --global user.name "Bitbucket Pipelines"
+            - bash ./gradlew release -Dhttp.proxyHost=localhost -Dhttp.proxyPort=29418
+            - bash ./gradlew publish
+          artifacts:
+            - build/reports/**
+            - build/test-results/**
+            - target/jpt-workspace/**
+            - target/surefire-reports/**
+            - examples/ref-app/reference-jira-app-performance-tests/target/**
+  custom:
+    aws-housekeeping:
+      - step:
+          name: AWS housekeeping
+          script:
+            - cd ./examples/ref-app
+            - bash ./mvnw -pl reference-jira-app-performance-tests test-compile exec:java@clean-all-expired -Djpt.housekeeping.protection.override=us-east-1
+definitions:
+  caches:
+    gradlewrapper: ~/.gradle/wrapper
