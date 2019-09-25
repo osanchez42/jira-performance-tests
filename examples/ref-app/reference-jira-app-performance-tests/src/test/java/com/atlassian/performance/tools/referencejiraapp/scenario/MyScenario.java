@@ -39,23 +39,23 @@ public class MyScenario implements Scenario {
         final AdaptiveProjectMemory adaptiveProjectMemory = new AdaptiveProjectMemory(seededRandom);
 
         //d42 credentials
-        final String d42BaseUrl = ""; //D42 Base Address
-        final String d42Username = ""; //D42 username
-        final String d42Password = ""; //D42 password
+        final String d42BaseUrl = "https://d42-3654.device42.net/"; //D42 Base Address
+        final String d42Username = "omar.sanchez@device42.com"; //D42 username
+        final String d42Password = "adm!nd42"; //D42 password
 
         return ImmutableList.of(
-            new ConfigurePluginAction(webJira, actionMeter, d42BaseUrl, d42Username, d42Password), //my custom action
-            new SearchJqlAction(webJira, actionMeter, jqlMemory, issueKeyMemory),
-            new BrowseProjectsAction(webJira, actionMeter, adaptiveProjectMemory),
-            new CreateIssueAction(webJira, actionMeter, adaptiveProjectMemory, seededRandom),
-            new CreateIssueAction(webJira, actionMeter, adaptiveProjectMemory, seededRandom),
-            new CreateIssueAction(webJira, actionMeter, adaptiveProjectMemory, seededRandom),
-            new CreateIssueAction(webJira, actionMeter, adaptiveProjectMemory, seededRandom),
-            new CreateIssueAction(webJira, actionMeter, adaptiveProjectMemory, seededRandom),
-            new CreateIssueAction(webJira, actionMeter, adaptiveProjectMemory, seededRandom),
-            new CreateIssueAction(webJira, actionMeter, adaptiveProjectMemory, seededRandom),
-            new CreateIssueAction(webJira, actionMeter, adaptiveProjectMemory, seededRandom),
-            new CustomViewIssueAction(webJira, actionMeter, issueKeyMemory)
+            new ConfigurePluginAction(webJira, actionMeter, d42BaseUrl, d42Username, d42Password) //my custom action
+            //new SearchJqlAction(webJira, actionMeter, jqlMemory, issueKeyMemory),
+            //new BrowseProjectsAction(webJira, actionMeter, adaptiveProjectMemory),
+            //new CreateIssueAction(webJira, actionMeter, adaptiveProjectMemory, seededRandom),
+            //new CreateIssueAction(webJira, actionMeter, adaptiveProjectMemory, seededRandom),
+            //new CreateIssueAction(webJira, actionMeter, adaptiveProjectMemory, seededRandom),
+            //new CreateIssueAction(webJira, actionMeter, adaptiveProjectMemory, seededRandom),
+            //new CreateIssueAction(webJira, actionMeter, adaptiveProjectMemory, seededRandom),
+            //new CreateIssueAction(webJira, actionMeter, adaptiveProjectMemory, seededRandom),
+            //new CreateIssueAction(webJira, actionMeter, adaptiveProjectMemory, seededRandom),
+            //new CreateIssueAction(webJira, actionMeter, adaptiveProjectMemory, seededRandom),
+            //new CustomViewIssueAction(webJira, actionMeter, issueKeyMemory)
         );
     }
 }

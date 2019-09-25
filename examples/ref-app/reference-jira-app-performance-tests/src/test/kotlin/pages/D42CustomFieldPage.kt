@@ -131,7 +131,6 @@ class D42CustomFieldPage(
         }
 
         println("Device42 Plugin Configuration Completed")
-
     }
 
 }

@@ -1,6 +1,7 @@
 package com.atlassian.performance.tools.referencejiraapp.actions;
 
 import com.atlassian.performance.tools.jiraactions.api.WebJira;
+import com.atlassian.performance.tools.jiraactions.api.ActionTypes;
 import com.atlassian.performance.tools.jiraactions.api.action.Action;
 import com.atlassian.performance.tools.jiraactions.api.measure.ActionMeter;
 import com.atlassian.performance.tools.referencejiraapp.pages.D42CredentialsPage;
@@ -34,16 +35,21 @@ public class ConfigurePluginAction implements Action  {
         //jira.adminPassword is private so had to specify it manually here
         String adminPassword = "admin";
 
-        //configure credentials
-        jira.navigateTo("plugins/servlet/d42/admin?action=getEdit");
-        new D42CredentialsPage(jira.getDriver(), d42Url, d42Username, d42Password).configureD42Plugin();
+        //TODO: Create Custom ActionType
+        meter.measure(ActionTypes.SET_UP,  () -> {
+            //configure credentials
+            jira.navigateTo("plugins/servlet/d42/admin?action=getEdit");
+            new D42CredentialsPage(jira.getDriver(), d42Url, d42Username, d42Password).configureD42Plugin();
 
-        //run the d42 scan
-        jira.navigateTo("/plugins/servlet/d42/admin?action=getUpdate");
-        new D42ScanPage(jira.getDriver()).runScan();
+            //run the d42 scan
+            jira.navigateTo("/plugins/servlet/d42/admin?action=getUpdate");
+            new D42ScanPage(jira.getDriver()).runScan();
 
-        //configure the custom field on all pages
-        jira.navigateTo("/secure/admin/ViewCustomFields.jspa");
-        new D42CustomFieldPage(jira.getDriver(), adminPassword).setCustomField();
+            //configure the custom field on all pages
+            jira.navigateTo("/secure/admin/ViewCustomFields.jspa");
+            new D42CustomFieldPage(jira.getDriver(), adminPassword).setCustomField();
+
+            return null;
+        });
     }
 }

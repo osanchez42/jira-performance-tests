@@ -228,7 +228,7 @@
 
     <properties>
         <kotlin.version>1.2.70</kotlin.version>
-        <selenium.version>3.1.0</selenium.version>
+        <selenium.version>3.11.0</selenium.version>
         <jpt.version>3.3.0</jpt.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>

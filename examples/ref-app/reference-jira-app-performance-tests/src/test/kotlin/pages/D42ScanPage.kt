@@ -28,7 +28,7 @@ class D42ScanPage(
         //wait for scan to complete for a maximum of 1 minute
         for(x in 0..10)
         {
-            Thread.sleep(6000)
+            Thread.sleep(10000)
             driver.navigate().refresh()
             if(driver.pageSource.contains("Scan completed successfully"))
             {

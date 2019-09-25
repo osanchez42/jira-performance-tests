@@ -21,13 +21,13 @@ public class MyAws {
      * When you set up this periodic housekeeping (e.g. a cronjob or a scheduled CI), add the covered region here.
      */
     private final Regions[] regionsWithHousekeeping = {
-        Regions.US_EAST_1
+        Regions.US_EAST_2
     };
 
     /**
      * The following AWS regions are not yet supported: EU_WEST_3, SA_EAST_1, GovCloud
      */
-    public final Aws aws = new Aws.Builder(Regions.US_EAST_1)
+    public final Aws aws = new Aws.Builder(Regions.US_EAST_2)
         .credentialsProvider(
             new AWSCredentialsProviderChain(
                 new DefaultAWSCredentialsProviderChain(),

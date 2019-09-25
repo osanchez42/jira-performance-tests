@@ -25,12 +25,15 @@ public class MyLoginAction implements Action {
     @Override
     public void run() {
         final User user = userMemory.recall();
+
         if (user == null) {
             throw new RuntimeException("Can't login. User not available.");
         }
+
         meter.measure(ActionTypes.LOG_IN, () -> {
             final DashboardPage dashboardPage = jira.goToLogin().logIn(user);
             return dashboardPage.waitForDashboard();
         });
+
     }
 }
