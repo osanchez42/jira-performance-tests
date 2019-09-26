@@ -50,7 +50,7 @@ class DcReadiness {
     private final AppSource app;
     private final Aws aws;
     private final File vuJar;
-    private final Class<? extends Scenario> scenario = JiraSoftwareScenario.class;
+    private final Class<? extends Scenario> scenario = com.atlassian.performance.tools.referencejiraapp.scenario.MyScenario.class;
     private final ProductDistribution product = new PublicJiraSoftwareDistribution("7.5.0");
     private final Dataset dataset = new DatasetCatalogue().largeJiraSeven();
     private final Duration duration = Duration.ofMinutes(20);

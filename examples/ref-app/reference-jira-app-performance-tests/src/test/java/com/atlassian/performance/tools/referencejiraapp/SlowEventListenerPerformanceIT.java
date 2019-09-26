@@ -4,6 +4,7 @@ import com.atlassian.performance.tools.infrastructure.api.app.AppSource;
 import com.atlassian.performance.tools.jiraperformancetests.api.AppImpactTest;
 import com.atlassian.performance.tools.jiraperformancetests.api.LocalApp;
 import com.atlassian.performance.tools.referencejiraapp.aws.MyAws;
+import com.atlassian.performance.tools.referencejiraapp.scenario.MyScenario;
 import org.junit.Test;
 
 import java.io.File;
@@ -18,7 +19,9 @@ public class SlowEventListenerPerformanceIT {
         final File virtualUsersJar = new File("target/reference-jira-app-performance-tests-1.0-SNAPSHOT-fat-tests.jar");
         final AppImpactTest test = new AppImpactTest(app, new MyAws().aws, virtualUsersJar);
 
-        test.setScenario(com.atlassian.performance.tools.referencejiraapp.scenario.MyScenario.class);
+        MyScenario myScenario = new MyScenario();
+        test.setScenario(myScenario.getClass());
+        test.run();
 
 
 //        /*
@@ -81,8 +84,5 @@ public class SlowEventListenerPerformanceIT {
 //        /*
 //         * Optionally, set the location of the JAR file with the tests.
 //         */
-//        test.setTestJar(new java.io.File("/path/to/custom/jar/file"));
-
-        test.run();
     }
 }
